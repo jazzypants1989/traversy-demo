@@ -17,12 +17,17 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-//I can ride my bike with no...
+// I can ride my bike with no...
 app.engine('.hbs', exphbs.engine({
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    extname: '.hbs'
 }
     ))
 app.set('view engine', '.hbs')
+
+// Routes, no pouts!
+
+app.use('/', require('./routes/index'))
 
 const PORT = process.env.PORT || 5500
 
