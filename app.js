@@ -29,14 +29,15 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Hamburger Helpers
-const { formatDate, stripTags, truncate } = require('./helpers/hbs')
+const { formatDate, stripTags, truncate, editIcon } = require('./helpers/hbs')
 
 // I can ride my bike with no...
 app.engine('.hbs', exphbs.engine({
     helpers: {
         formatDate,
         stripTags,
-        truncate
+        truncate,
+        editIcon,
     },
     defaultLayout: 'main',
     extname: '.hbs'
@@ -59,6 +60,12 @@ app.use(
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Set global variable
+app.use(function (req, res, next) {
+    res.locals.user = req.user || null
+    next()
+})
 
 // Static Folder
 
