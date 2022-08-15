@@ -12,3 +12,16 @@ p {
     font-size: 16px !important;
     background-color: #44CC22;
 }
+
+.btn-float {
+    float: left;
+    margin-right: 10px; 
+}
+
+.img-small {
+    width: 180px;
+}
+
+.ping-pong {
+    color: #44CC22
+}
